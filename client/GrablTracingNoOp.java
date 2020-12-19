@@ -28,7 +28,7 @@ public class GrablTracingNoOp implements GrablTracing {
     }
 
     @Override
-    public Analysis analysis(String owner, String repo, String commit) {
+    public Analysis analysis(String owner, String repo, String commit, String name) {
         return LazyHolder.ANALYSIS;
     }
 

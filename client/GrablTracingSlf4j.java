@@ -33,9 +33,9 @@ public class GrablTracingSlf4j implements GrablTracing {
     }
 
     @Override
-    public Analysis analysis(String owner, String repo, String commit) {
-        LOG.trace("analysis: {} {} {}", owner, repo, commit);
-        return new AnalysisImpl(innerTracing.analysis(owner, repo, commit));
+    public Analysis analysis(String owner, String repo, String commit, String name) {
+        LOG.trace("analysis: {} {} {} {}", owner, repo, commit, name);
+        return new AnalysisImpl(innerTracing.analysis(owner, repo, commit, name));
     }
 
     @Override

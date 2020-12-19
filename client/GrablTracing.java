@@ -18,7 +18,7 @@ public interface GrablTracing extends AutoCloseable {
      * @param commit The commit in this repository.
      * @return An instance of the Analysis to send traces on.
      */
-    Analysis analysis(String owner, String repo, String commit);
+    Analysis analysis(String owner, String repo, String commit, String name);
 
     /**
     * Begin a continuation trace from a given root and parent ID. This trace links to a trace tree from an analysis

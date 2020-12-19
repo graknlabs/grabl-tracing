@@ -15,6 +15,7 @@ message Analysis {
         string owner = 1;
         string repo = 2;
         string commit = 3;
+        string name = 4;
     }
     message Res {
         int64 analysisId = 1;

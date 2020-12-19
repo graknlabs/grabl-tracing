@@ -59,12 +59,12 @@ public class GrablTracingThreadStatic {
      * @param repo The Grabl tracing repo to set.
      * @param commit The Grabl tracing commit to set.
      */
-    public synchronized static void openGlobalAnalysis(String owner, String repo, String commit) {
+    public synchronized static void openGlobalAnalysis(String owner, String repo, String commit, String analysisName) {
         if (!ENABLED.get()) {
             throw new IllegalStateException("Tried to open analysis without setting a global tracing client");
         }
         if (ANALYSIS_SET.compareAndSet(false, true)) {
-            singletonAnalysis = singletonClient.analysis(owner, repo, commit);
+            singletonAnalysis = singletonClient.analysis(owner, repo, commit, analysisName);
         } else {
             throw new IllegalStateException("Tried to open global analysis twice");
         }

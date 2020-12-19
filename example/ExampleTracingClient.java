@@ -17,7 +17,7 @@ public class ExampleTracingClient {
 
         try (GrablTracing tracing = withLogging(tracing(args[0]))) {
 
-            Analysis analysis = tracing.analysis("testowner", "testrepo", "testcommit");
+            Analysis analysis = tracing.analysis("testowner", "testrepo", "testcommit", "testanalysis");
 
             for (int i = 0; i < iterations; ++i) {
                 Trace outerTrace = analysis.trace("test.root", "my:tracker", i);

@@ -33,11 +33,12 @@ public class GrablTracingStandard implements GrablTracing {
         return new TraceImpl(rootId, parentId, name);
     }
 
-    public Analysis analysis(String owner, String repo, String commit) {
+    public Analysis analysis(String owner, String repo, String commit, String analysisName) {
         requireNonNull(owner, "Cannot use null owner");
         requireNonNull(repo, "Cannot use null repo");
         requireNonNull(commit, "Cannot use null commit");
-        return new AnalysisImpl(owner, repo, commit);
+        requireNonNull(analysisName, "Cannot use null analysis name");
+        return new AnalysisImpl(owner, repo, commit, analysisName);
     }
 
     @Override
@@ -54,11 +55,12 @@ public class GrablTracingStandard implements GrablTracing {
 
         private final long analysisId;
 
-        private AnalysisImpl(String owner, String repo, String commit) {
+        private AnalysisImpl(String owner, String repo, String commit, String analysisName) {
             TracingProto.Analysis.Req req = TracingProto.Analysis.Req.newBuilder()
                     .setOwner(owner)
                     .setRepo(repo)
                     .setCommit(commit)
+                    .setName(analysisName)
                     .build();
             TracingProto.Analysis.Res res = tracingServiceBlockingStub.create(req);
             analysisId = res.getAnalysisId();
